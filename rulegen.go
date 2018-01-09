@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"regexp"
-	"strconv"
 )
 
 func FindEntery(scan int, scanning DebpackageManEntry, root map[string]Leaf) {
@@ -82,11 +81,8 @@ type Leaf struct {
 
 func RegxEscape(in string) string {
 	var desret string
-	exp := regexp.MustCompile(`([^a-zA-Z0-9])`)
-	//desret = exp.ReplaceAllString(in, "\\$1")
-	desret = exp.ReplaceAllStringFunc(in, func(arg1 string) string {
-		return strconv.QuoteToASCII(arg1)
-	})
+	exp := regexp.MustCompile(`[-[\]{}()*+?.,\\^$|#\s]`)
+	desret = exp.ReplaceAllString(in, "\\$1")
 	return desret
 }
 
