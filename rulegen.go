@@ -130,7 +130,7 @@ func Construct(root map[string]Leaf) [](ReplyC) {
 
 		brief := NewChat().
 			AddCond("man").
-			AddCond(RegxEscape(rtele.Entry.Name) + "^").
+			AddCond(RegxEscape(rtele.Entry.Name) + "$").
 			SetOutput(RegxEscape(FormartBrief(rtele))).
 			SetOutputT(briefTag)
 		more :=
