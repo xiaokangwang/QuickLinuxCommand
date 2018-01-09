@@ -2,7 +2,9 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"regexp"
+	"strings"
 )
 
 func FindEntery(scan int, scanning DebpackageManEntry, root map[string]Leaf) {
@@ -152,7 +154,16 @@ func FormartBrief(lea Leaf) string {
 	ent := lea.Entry
 	var ret string
 	ret += fmt.Sprintf("下面是来自包 %v 的 %v 的手册的描述。\n", ent.Pkg.Name, ent.Name)
-	ret += ent.Brief
+	limlen := strings.Split(ent.Brief, "\n")
+	limlen2 := make([]string, 0)
+	for _, c := range limlen {
+		if c != "" {
+			limlen2 = append(limlen2, c)
+		}
+	}
+	l := int(math.Min(7, (float64)(len(limlen2)-1)))
+	o := strings.Join(limlen2[:l], "\n")
+	ret += o
 	ret += `您可以访问下放链接获取来获取完整的手册` + "\n"
 	ret += "https://manpages.debian.org" + ent.Url + "\n"
 	ret += fmt.Sprintf("这个内容来自 %v 章节\n", GetSecName(ent.Mantype))
