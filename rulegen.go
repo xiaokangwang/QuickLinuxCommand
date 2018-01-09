@@ -153,7 +153,7 @@ func FormartBrief(lea Leaf) string {
 	var ret string
 	ret += fmt.Sprintf("下面是来自包 %v 的 %v 的手册的描述。\n", ent.Pkg.Name, ent.Name)
 	ret += ent.Brief
-	ret += `您可以回复 more 或者访问下放链接获取来获取完整的手册` + "\n"
+	ret += `您可以访问下放链接获取来获取完整的手册` + "\n"
 	ret += "https://manpages.debian.org" + ent.Url + "\n"
 	ret += fmt.Sprintf("这个内容来自 %v 章节\n", GetSecName(ent.Mantype))
 	if lea.Lang != nil {
