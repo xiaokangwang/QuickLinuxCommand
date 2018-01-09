@@ -81,7 +81,7 @@ type Leaf struct {
 
 func RegxEscape(in string) string {
 	var desret string
-	exp := regexp.MustCompile(`[-[\]{}()*+?.,\\^$|#\s]`)
+	exp := regexp.MustCompile(`[-[\]{}()*+?.,\\^$|#]`)
 	desret = exp.ReplaceAllString(in, "\\$1")
 	return desret
 }
