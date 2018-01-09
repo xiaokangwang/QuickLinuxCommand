@@ -135,9 +135,9 @@ func Construct(root map[string]Leaf) [](ReplyC) {
 			AddCond(" " + RegxEscape(rtele.Entry.Name) + "$").
 			SetOutput(RegxEscape(FormartBrief(rtele))).
 			SetOutputT(briefTag)
-		more :=
-			GenMore(rtele.Entry, briefTag, fmt.Sprintf("MAN%vMORE00", rtele.Entry.Name))
-		desret = append(desret, *brief, more)
+
+		GenMore(rtele.Entry, briefTag, fmt.Sprintf("MAN%vMORE00", rtele.Entry.Name))
+		desret = append(desret, *brief)
 	}
 	return desret
 }
